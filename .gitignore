@@ -1,2 +1,4 @@
-/nve400_wraped.pdb
-/output.csv
+*.pdb
+*.csv
+*.png
+*.dat
