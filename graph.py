@@ -4,7 +4,7 @@ import pandas as pd
 
 def main():
     df = pd.read_csv("./output.csv")
-    plt.plot(df.volume[:36])
+    plt.plot(df.volume[0:36])
     plt.show()
 
 

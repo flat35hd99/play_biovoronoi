@@ -3,7 +3,7 @@ import pandas as pd
 
 
 def main():
-    voronoi_df = pd.read_csv("./output.csv")[:36]
+    voronoi_df = pd.read_csv("./output.csv")[0:36]
     vldp_df = pd.read_table("./vldp.dat", delim_whitespace=True, header=8)
     vldp_df.columns = [
         "MOL",
@@ -18,9 +18,7 @@ def main():
         "LOCUS",
         "empty"
     ]
-    vldp_df = vldp_df.groupby("NUMMOL").sum()
-    
-    print(voronoi_df.index)
+    vldp_df = vldp_df.groupby("NUMMOL", as_index=False).sum()
     
     residue_id = voronoi_df["residue_id"]
 
@@ -30,9 +28,6 @@ def main():
     ax.legend()
     
     plt.savefig("real.png")
-    
-    print((voronoi_df["volume"] - vldp_df["VOLUME"]))
-    print(voronoi_df["residue_id"].shape)
 
     fig1, ax1 = plt.subplots()
     ax1.plot(residue_id, (voronoi_df["volume"] - vldp_df["VOLUME"])/vldp_df["VOLUME"], label="vldp")
