@@ -30,7 +30,7 @@ def main():
     plt.savefig("real.png")
 
     fig1, ax1 = plt.subplots()
-    ax1.plot(residue_id, (voronoi_df["volume"] - vldp_df["VOLUME"])/vldp_df["VOLUME"], label="vldp")
+    ax1.plot(residue_id, (voronoi_df["volume"] - vldp_df["VOLUME"])/vldp_df["VOLUME"], label="ratio")
     ax1.legend()
     
     plt.savefig("ratio.png")
